@@ -1,78 +1,81 @@
-import { createStore, Store, Commit } from "vuex";
+// store.ts
+import { createStore, Store } from "vuex";
 import axios from "axios";
 
-interface Province {
-  id: number;
-  name: string;
-}
-
-interface City {
+interface Location {
   id: number;
   name: string;
 }
 
 interface State {
-  provinces: Province[];
-  cities: City[];
-  selectedProvince: string | null;
-  selectedCity: string | null;
+  provinces: Location[];
+  regencies: Location[];
+  districts: Location[];
+  villages: Location[];
 }
 
 const store: Store<State> = createStore({
   state: {
     provinces: [],
-    cities: [],
-    selectedProvince: null,
-    selectedCity: null,
+    regencies: [],
+    districts: [],
+    villages: [],
   },
 
   mutations: {
-    setProvinces(state: State, provinces: Province[]) {
+    setProvinces(state, provinces) {
       state.provinces = provinces;
     },
-    setCities(state: State, cities: City[]) {
-      state.cities = cities;
+    setRegencies(state, regencies) {
+      state.regencies = regencies;
     },
-
-    setSelectedProvince(state: State, province: string | null) {
-      state.selectedProvince = province;
+    setDistricts(state, districts) {
+      state.districts = districts;
     },
-    setSelectedCity(state: State, city: string | null) {
-      state.selectedCity = city;
+    setVillages(state, villages) {
+      state.villages = villages;
     },
   },
 
   actions: {
-    async fetchProvinces({ commit }: { commit: Commit }) {
-      try {
-        const response = await axios.get(
-          "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json"
-        );
-        const provinces = response.data;
-        commit("setProvinces", provinces);
-      } catch (error) {
-        console.error("Error fetching provinces:", error);
-      }
+    async fetchProvinces({ commit }) {
+      const response = await axios.get(
+        "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json"
+      );
+      commit("setProvinces", response.data);
     },
-
-    async fetchCities({ commit }: { commit: Commit }, provinceId: string) {
-      try {
-        const response = await axios.get(
-          `https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinceId}.json`
-        );
-        commit("setCities", response.data);
-      } catch (error) {
-        console.error("Error fetching cities:", error);
-      }
+    async fetchRegencies({ commit }, provinceId) {
+      const response = await axios.get(
+        `https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinceId}.json`
+      );
+      commit("setRegencies", response.data);
+    },
+    async fetchDistricts({ commit }, regencyId) {
+      const response = await axios.get(
+        `https://www.emsifa.com/api-wilayah-indonesia/api/districts/${regencyId}.json`
+      );
+      commit("setDistricts", response.data);
+    },
+    async fetchVillages({ commit }, districtId) {
+      const response = await axios.get(
+        `https://www.emsifa.com/api-wilayah-indonesia/api/villages/${districtId}.json`
+      );
+      commit("setVillages", response.data);
     },
   },
 
   getters: {
-    getProvinces(state: State): Province[] {
+    getProvinces(state) {
       return state.provinces;
     },
-    getCities(state: State) {
-      return state.cities;
+    getRegencies(state) {
+      return state.regencies;
+    },
+    getDistricts(state) {
+      return state.districts;
+    },
+    getVillages(state) {
+      return state.villages;
     },
   },
 });
