@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watchEffect, watch } from "vue";
+import { ref, onMounted, onBeforeMount, watchEffect, watch } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
@@ -73,56 +73,48 @@ const selectedRegency = ref("");
 const selectedDistrict = ref("");
 const selectedVillage = ref("");
 
-const fetchProvinces = () => {
-  store.dispatch("fetchProvinces");
-};
-
-const fetchRegencies = () => {
+const fetchRegencies = async () => {
   if (selectedProvince.value) {
-    store.dispatch("fetchRegencies", selectedProvince.value);
+    await store.dispatch("fetchRegencies", selectedProvince.value);
+    regencies.value = store.getters.getRegencies;
   }
 };
 
-const fetchDistricts = () => {
+const fetchDistricts = async () => {
   if (selectedRegency.value) {
-    store.dispatch("fetchDistricts", selectedRegency.value);
+    await store.dispatch("fetchDistricts", selectedRegency.value);
+    districts.value = store.getters.getDistricts;
   }
 };
 
-const fetchVillages = () => {
+const fetchVillages = async () => {
   if (selectedDistrict.value) {
-    store.dispatch("fetchVillages", selectedDistrict.value);
+    await store.dispatch("fetchVillages", selectedDistrict.value);
+    villages.value = store.getters.getVillages;
   }
 };
 // Gunakan watch untuk memuat data ketika nilai berubah
-watch(selectedProvince, (newProvince: any) => {
-  if (newProvince) {
-    fetchRegencies();
-  }
-});
+// watch(selectedProvince, (newProvince: any) => {
+//   if (newProvince) {
+//     fetchRegencies();
+//   }
+// });
 
-watch(selectedRegency, (newRegency: any) => {
-  if (newRegency) {
-    fetchDistricts();
-  }
-});
+// watch(selectedRegency, (newRegency: any) => {
+//   if (newRegency) {
+//     fetchDistricts();
+//   }
+// });
 
-watch(selectedDistrict, (newDistrict: any) => {
-  if (newDistrict) {
-    fetchVillages();
-  }
-});
+// watch(selectedDistrict, (newDistrict: any) => {
+//   if (newDistrict) {
+//     fetchVillages();
+//   }
+// });
 
-onMounted(() => {
-  fetchProvinces();
-});
-
-onMounted(() => {
-  fetchProvinces();
+onMounted(async () => {
+  await store.dispatch("fetchProvinces");
   provinces.value = store.getters.getProvinces;
-  regencies.value = store.getters.getRegencies;
-  districts.value = store.getters.getDistricts;
-  villages.value = store.getters.getVillages;
 });
 
 // Mengamati perubahan pada variabel terkait
