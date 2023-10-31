@@ -1,9 +1,9 @@
 <template>
   <main>
     <div class="mx-auto max-w-screen-lg px-8 lg:px-1 py-6 mb-8">
-      <div class="container lg:pr-8">
+      <div class="container lg:pr-8 mb-3">
         <h1
-          class="text-6xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 lg:pr-8"
+          class="text-5xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 lg:pr-8"
         >
           Hi, I'm Herlambang.
         </h1>
@@ -14,6 +14,12 @@
           </span>
         </div>
       </div>
+      <a
+        class="text-black bg-white md:opacity-50 hover:opacity-100 px-7 py-2 items-center rounded-full cursor-pointer borderBlack"
+        :href="'https://drive.google.com/file/d/1mG8LSaSVqrQGZA19GUgj_o15_NtiZUDR/view?usp=sharing'"
+      >
+        Download CV
+      </a>
     </div>
     <div class="mx-auto max-w-screen-lg px-8 lg:px-1 py-6">
       <div class="mb-6 text-2xl font-bold">
@@ -22,7 +28,7 @@
             Recent <span class="text-fuchsia-500">Portofolio</span>
           </h2>
           <div class="text-sm">
-            <a href="https://www.linkedin.com/in/herlambangk25/">Know more →</a>
+            <a href="/about">Know more →</a>
           </div>
         </div>
       </div>

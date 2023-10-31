@@ -23,8 +23,8 @@ const store: Store<State> = createStore({
   },
 
   mutations: {
-    setProvinces(state, provinces) {
-      state.provinces = provinces;
+    setProvinces(state, dataProvinces) {
+      state.provinces = dataProvinces;
     },
     setRegencies(state, regencies) {
       state.regencies = regencies;
@@ -38,13 +38,13 @@ const store: Store<State> = createStore({
   },
 
   actions: {
-    async fetchProvinces({ commit }) {
+    async fetchProvinces({ commit }: any) {
       const response = await axios.get(
         "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json"
       );
       commit("setProvinces", response.data);
     },
-    async fetchRegencies({ commit }, provinceId) {
+    async fetchRegencies({ commit }: any, provinceId) {
       const response = await axios.get(
         `https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinceId}.json`
       );

@@ -2,8 +2,8 @@ import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
 
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import Alamat from "../views/Alamat.vue";
-// import Todo from "../components/Todo.vue";
+import Portofolio from "../views/Portofolio.vue";
+import Contact from "../views/Contact.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -16,17 +16,18 @@ const routes: Array<RouteRecordRaw> = [
     component: About,
   },
   {
-    path: "/alamat",
-    name: "Alamat",
-    component: Alamat,
+    path: "/portofolio",
+    name: "Portofolio",
+    component: Portofolio,
   },
-  // {
-  //   path: "/todo",
-  //   name: "Todo",
-  //   component: Todo,
-  // },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: Contact,
+  },
 
   // { path: "/:path(.*)", component: NotFound },
+
   ,
 ];
 

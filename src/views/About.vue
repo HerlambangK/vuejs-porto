@@ -39,9 +39,9 @@
           about creating easy to use websites for users and visually appealing.
           I focus on core web vitals and development design system.
         </p>
-        <!-- <div class="flex mt-3 -mx-2">
+        <div class="flex mt-3 -mx-2">
           <a
-            href="https://twitter.com/handrihmw"
+            href="https://twitter.com/bukanherlambang"
             class="mx-2 text-gray-100 dark:text-gray-300 dark:hover:text-gray-300"
             aria-label="Twitter"
           >
@@ -59,7 +59,7 @@
           </a>
 
           <a
-            href="https://handri.medium.com"
+            href="https://medium.com/@herlambangk25"
             class="mx-2 text-gray-100 dark:text-gray-300 dark:hover:text-gray-300"
             aria-label="Medium"
           >
@@ -79,7 +79,7 @@
           </a>
 
           <a
-            href="https://github.com/handrihmw"
+            href="https://github.com/HerlambangK"
             class="mx-2 text-gray-100 dark:text-gray-300 dark:hover:text-gray-300"
             aria-label="Github"
           >
@@ -96,7 +96,7 @@
             </svg>
           </a>
           <a
-            href="https://linkedin.com/in/handrihmw"
+            href="https://www.linkedin.com/in/herlambangk25/"
             class="mx-2 text-gray-100 dark:text-gray-300 dark:hover:text-gray-300"
             aria-label="Github"
           >
@@ -112,7 +112,7 @@
               />
             </svg>
           </a>
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3 m-5">
@@ -133,8 +133,13 @@ import { ref } from "vue";
 const items = ref([
   {
     title: "Web production Spesialist",
-    place: "Niagahoster • Yogyakarta",
-    date: "Feb 2019 • Ags 2023",
+    place: "Niagahoster | Yogyakarta",
+    date: "Feb 2019  Ags 2023",
+  },
+  {
+    title: "Full Stack Web Bootcamp",
+    place: "Binar Academy",
+    date: "16 Aug 2020 - 15 Mar 2023",
   },
 ]);
 </script>

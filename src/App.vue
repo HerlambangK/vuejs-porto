@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-cover bg-gray-900 text-white overflow-hidden">
+  <div class="h-screen mx-auto bg-gray-900 text-white overflow-y-auto">
     <nav class="md:p-2">
       <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -124,8 +124,8 @@ export default defineComponent({
     links: [
       { text: "Home", to: "/" },
       { text: "About", to: "/about" },
-      { text: "Alamat", to: "/alamat" },
-      { text: "Portfolio", to: "/portfolio" },
+      { text: "Portofolio", to: "/portofolio" },
+      { text: "Contact", to: "/contact" },
     ],
   }),
 });

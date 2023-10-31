@@ -11,7 +11,7 @@
                 loading="eager"
                 width="48"
                 height="32"
-                alt="logo handri hermawan"
+                alt="logo herlambang"
               />
             </a>
           </div>
